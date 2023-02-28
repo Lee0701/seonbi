@@ -429,12 +429,12 @@ southKoreanDictionary =
     bytes :: Data.ByteString.Lazy.ByteString
     bytes = Data.ByteString.Lazy.fromStrict $ $(embedFile $
         takeDirectory __FILE__ </> ".." </> ".." </> ".." </> "data" </>
-        "ko-kr-stdict.tsv")
+        "hanja-legal.tsv")
 
 #else
 southKoreanDictionary = do
     dataDir <- getDataDir
-    readDictionaryFile (dataDir </> "ko-kr-stdict.tsv")
+    readDictionaryFile (dataDir </> "hanja-legal.tsv")
 #endif
 
 data DictionaryPair = DictionaryPair !Text !Text deriving (Generic, Show)
