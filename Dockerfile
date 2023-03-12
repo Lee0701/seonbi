@@ -1,7 +1,7 @@
 # To correctly make a statically-linked binary, we use Alpine Linux.
 # The distro entirely uses musl instead of glibc which is unfriendly to be
 # statically linked.
-FROM haskell:9.2.5 AS build
+FROM haskell:9.2.7 AS build
 
 LABEL "org.opencontainers.image.title"="Seonbi"
 LABEL "org.opencontainers.image.licenses"="LGPL-2.1"
@@ -27,7 +27,7 @@ RUN stack build \
   --flag seonbi:static \
   --copy-bins
 
-FROM haskell:9.2.5
+FROM haskell:9.2.7
 
 COPY --from=build /root/.local/bin/seonbi* /usr/local/bin/
 ENV LANG=en_US.UTF-8
