@@ -14,7 +14,7 @@ To be released.
  -  The `iconv` flag became ignored on Windows, because the flag had never
     worked on Windows.
 
- -  Previosuly, `ContentType` type (and `-t`/`--content-type` in CLI and
+ -  Previously, `ContentType` type (and `-t`/`--content-type` in CLI and
     `"contentType"` field in HTTP API) was a mere case-insensitive string.
     Now, it is loosely structured so that it can contain parameters.  You can
     treat it as a media type (MIME type).
@@ -30,6 +30,25 @@ To be released.
         able to handle media types with parameters, and now it falls back
         more-specific media types to less-specific media types if there is no
         exactly matched one.
+
+ -  For `text/html` and `application/xhtml+xml` formats, some obsolete HTML
+    tags are no more ignored, but now recognized as valid HTML tags.  Here are
+    the list of added tags:
+
+     -  `<center>`
+     -  `<font>`
+     -  `<nobr>`
+     -  `<strike>`
+     -  `<xmp>`
+
+    Haskell API-wise, the following constructors were added to
+    the `Text.Seonbi.Html.Tag.HtmlTag` type:
+
+     -  `Center`
+     -  `Font`
+     -  `NoBR`
+     -  `Strike`
+     -  `XMP`
 
  -  Deno module became possible to use an already deployed Seonbi API server
     instead of spawning a local API server.  The `new Seonbi()` constructor
